@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+    function fetchWelcome() {
+      // Fetch the response from the URL,
+      // and then use Promise chaining
+      // to handle the result
+      fetch('https://robinhood.com/robots.txt')
+        .then(convertToText)
+        .then(addTextToPage);
+    }
+    
+    function convertToText(response) {
+      // Convert the response to text,
+      // which returns a Promise
+      return response.text();
+    }
+    
+    function addTextToPage(text){
+      document
+        .getElementById('welcome-container')
+        .innerText = text;      
+    }
+  </script>
+</head>
+<body onload="fetchWelcome()">
+  <div id="welcome-container"></div>
+
+  <p>This is the page content.</p>
+</body>
+</html>
